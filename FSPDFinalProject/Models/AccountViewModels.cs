@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace FSPDFinalProject.Models
+namespace FSPDFinalProject.UI.MVC.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
