@@ -187,12 +187,39 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\1.jpg" />
+    <Content Include="Content\images\10.jpeg" />
+    <Content Include="Content\images\11.jpeg" />
+    <Content Include="Content\images\12.jpeg" />
+    <Content Include="Content\images\2.jpeg" />
+    <Content Include="Content\images\3.jpeg" />
+    <Content Include="Content\images\4.jpeg" />
+    <Content Include="Content\images\5.jpeg" />
+    <Content Include="Content\images\6.jpeg" />
+    <Content Include="Content\images\7.jpeg" />
+    <Content Include="Content\images\8.jpeg" />
+    <Content Include="Content\images\9.jpeg" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="_Archive\branding\images\1.jpg" />
+    <Content Include="_Archive\branding\images\10.jpeg" />
+    <Content Include="_Archive\branding\images\11.jpeg" />
+    <Content Include="_Archive\branding\images\12.jpeg" />
+    <Content Include="_Archive\branding\images\2.jpeg" />
+    <Content Include="_Archive\branding\images\3.jpeg" />
+    <Content Include="_Archive\branding\images\4.jpeg" />
+    <Content Include="_Archive\branding\images\5.jpeg" />
+    <Content Include="_Archive\branding\images\6.jpeg" />
+    <Content Include="_Archive\branding\images\7.jpeg" />
+    <Content Include="_Archive\branding\images\8.jpeg" />
+    <Content Include="_Archive\branding\images\9.jpeg" />
+    <Content Include="_Archive\branding\index.html" />
+    <Content Include="_Archive\branding\style.css" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -216,7 +243,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_OriginalLayout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -251,6 +278,7 @@
     <Content Include="Views\RolesAdmin\Delete.cshtml" />
     <Content Include="Views\RolesAdmin\Create.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
