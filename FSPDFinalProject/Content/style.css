@@ -2,6 +2,12 @@
     width: 100%;
 }
 
+.center {
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .sidebar {
     width: 20%;
     float: left;
@@ -65,7 +71,6 @@ h1 {
         .site-links a:hover {
             text-decoration: none;
             color: floralwhite;
-            ;
         }
 
 .social li {

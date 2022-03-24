@@ -20,21 +20,27 @@
         
         <div class="sidebar">
             <div class="menu">
-                <h1 class="text-center">Prime Hotels</h1>
                 <nav class="navbar">
+                    <img src="~/Content/images/21424439.jpg" class="center"/>
                     <ul class="navbar-nav list-group">
                         <li class="nav-item text-center list-group-item">
-                            <a class="nav-link" href="#">Home</a>
+                            <a class="nav-link" href=@Url.Action("Index", "Home")>Home</a>
                         </li>
                         <li class="nav-item text-center list-group-item">
-                            <a class="nav-link" href="#">Branding</a>
+                            <a class="nav-link" href=@Url.Action("Index", "Reservation")>Reserve a location</a>
                         </li>
                         <li class="nav-item text-center list-group-item">
-                            <a class="nav-link" href="#">Web-design</a>
+                            <a class="nav-link" href=@Url.Action("Contact", "Home")>Contacts</a>
                         </li>
-                        <li class="nav-item text-center list-group-item">
-                            <a class="nav-link" href="#">Contacts</a>
-                        </li>
+                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item text-center list-group-item">
+                                <a class="nav-link" href="@Url.Action("Index", "UsersAdmin")">Users Admin</a>
+                            </li>
+                            <li class="nav-itm text-center list-group-item">
+                                <a class="nav-link" href="@Url.Action("Index", "RolesAdmin")">Roles Admin</a>
+                            </li>
+                        }
                     </ul>
                 </nav>
                 <ul class="site-links">

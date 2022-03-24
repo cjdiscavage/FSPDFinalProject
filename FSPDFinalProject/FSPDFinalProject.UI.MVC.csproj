@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -192,6 +193,7 @@
     <Content Include="Content\images\11.jpeg" />
     <Content Include="Content\images\12.jpeg" />
     <Content Include="Content\images\2.jpeg" />
+    <Content Include="Content\images\21424439.jpg" />
     <Content Include="Content\images\3.jpeg" />
     <Content Include="Content\images\4.jpeg" />
     <Content Include="Content\images\5.jpeg" />
@@ -199,6 +201,8 @@
     <Content Include="Content\images\7.jpeg" />
     <Content Include="Content\images\8.jpeg" />
     <Content Include="Content\images\9.jpeg" />
+    <Content Include="Content\images\hotelinterior.jpg" />
+    <Content Include="Content\images\hotelinterior2.jpg" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -279,6 +283,7 @@
     <Content Include="Views\RolesAdmin\Create.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Reservation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

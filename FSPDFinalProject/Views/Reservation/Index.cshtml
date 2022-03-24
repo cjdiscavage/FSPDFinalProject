@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FSPDFinalProject.Data.EF.Reservation>
+
+@{
+    ViewBag.Title = "Reservations";
+}
+
+<h1 class="mt-4">@ViewBag.Title</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="card mb-4">
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OwnerAssetId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LocationId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ReservationDate)
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OwnerAssetId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LocationId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReservationDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ReservationId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ReservationId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ReservationId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
