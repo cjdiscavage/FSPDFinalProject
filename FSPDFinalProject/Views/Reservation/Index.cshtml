@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FSPDFinalProject.Data.EF.Reservation>
+﻿@model IEnumerable<FSPDFinalProject.Data.EF.Location>
 
 @{
     ViewBag.Title = "Reservations";
@@ -7,7 +7,8 @@
 <h1 class="mt-4">@ViewBag.Title</h1>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Reservation", "Create") |
+    @Html.ActionLink("Remove Reservation", "Remove")
 </p>
 <div class="card mb-4">
     <div class="card-body">
@@ -15,33 +16,35 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.OwnerAssetId)
+                        @Html.DisplayNameFor(model => model.LocationName)
                     </th>
+                    <th></th>
                     <th>
-                        @Html.DisplayNameFor(model => model.LocationId)
+                        Reservations available
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ReservationDate)
-                    </th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             @foreach (var item in Model)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.OwnerAssetId)
+                        @Html.DisplayFor(modelItem => item.LocationName)
                     </td>
+                    <td>|</td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.LocationId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ReservationDate)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ReservationId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ReservationId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ReservationId })
+                        @{
+                            int currentReservations = item.Reservations.Count();
+                            int reservationLimit = Convert.ToInt16(item.ReservationLimit);
+                            int difference = reservationLimit - currentReservations;
+                            if (difference < 1)
+                            {
+                                <div style="color: red">Full</div>
+                            }
+                            else
+                            {
+                                <div>@difference reservations left</div>
+                            }
+                        }
                     </td>
                 </tr>
             }

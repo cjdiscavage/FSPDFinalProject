@@ -10,7 +10,7 @@ namespace FSPDFinalProject.Data.EF
     public class LocationMetadata
     {
         [Display(Name = "Location ID")]
-        public int LocationID { get; set; }
+        public int LocationId { get; set; }
 
         [Required]
         [StringLength(50, ErrorMessage = "Maximum length is 50 characters.")]

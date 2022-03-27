@@ -10,6 +10,7 @@ using FSPDFinalProject.Data.EF;
 
 namespace FSPDFinalProject.Controllers
 {
+
     public class ReservationController : Controller
     {
         private ReservationSystemEntities db = new ReservationSystemEntities();
@@ -17,8 +18,13 @@ namespace FSPDFinalProject.Controllers
         // GET: Reservation
         public ActionResult Index()
         {
-            var reservations = db.Reservations;
+            var reservations = db.Locations.Include(e => e.Reservations);
             return View(reservations.ToList());
+        }
+
+        public ActionResult Full()
+        {
+            return View();
         }
 
         // GET: Reservation/Details/5
@@ -30,23 +36,46 @@ namespace FSPDFinalProject.Controllers
         // GET: Reservation/Create
         public ActionResult Create()
         {
+            ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets, "OwnerAssetId", "AssetName");
+            ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName");
             return View();
         }
 
         // POST: Reservation/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ReservationId,OwnerAssetId,LocationId,ReservationDate")] Reservation reservation)
         {
-            try
+            var resId = reservation.LocationId;
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var result = (from a in db.Locations
+                              where a.LocationId == reservation.LocationId
+                              select new { a.ReservationLimit, a.Reservations });
+                if (result.First().Reservations.Count() >= result.First().ReservationLimit)
+                {
+                    if (User.IsInRole("Admin"))
+                    {
+                        db.Reservations.Add(reservation);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Full");
+                    }
+                }
+                else
+                {
+                    db.Reservations.Add(reservation);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            ViewBag.OwnerAssetId = new SelectList(db.OwnerAssets, "OwnerAssetId", "AssetName", reservation.OwnerAssetId);
+            ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName", reservation.LocationId);
+            return View(reservation);
         }
 
         // GET: Reservation/Edit/5
@@ -71,26 +100,27 @@ namespace FSPDFinalProject.Controllers
             }
         }
 
+        public ActionResult Remove()
+        {
+            var reservations = db.Reservations;
+            return View(reservations.ToList());
+        }
+
         // GET: Reservation/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete()
         {
             return View();
         }
 
         // POST: Reservation/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Reservation reservation = db.Reservations.Find(id);
+            db.Reservations.Remove(reservation);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

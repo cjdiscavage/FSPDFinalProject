@@ -27,6 +27,7 @@ namespace FSPDFinalProject.Data.EF
         public string State { get; set; }
         public string ZipCode { get; set; }
         public byte ReservationLimit { get; set; }
+        public byte CurrentReservations { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservations { get; set; }
